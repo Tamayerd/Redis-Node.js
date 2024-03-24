@@ -52,15 +52,15 @@ This repository contains a Node.js controller class (`DevicesController`) design
 
 ## Functions
 
-# `saveDevice(req)`
+## `saveDevice(req)`
 
 This function saves device data received in the request (`req`). Data for multiple devices is expected in the form of an array within `req.body`. Each device must have a unique identifier (`device_id`). The function tracks saved device identifiers in a `Set` to ensure duplicates are not saved. Each device may have an array of elements in its latest log (`latest_log`) containing `id`, `can_message_id`, `name`, and `data`. This function saves each device to the database and logs a notification to the console with the saved device's identifier.
 
-# `staticMessageLogs(req)`
+## `staticMessageLogs(req)`
 
 This function is used to log static message entries. It processes request data (`req.body`) also expected in the form of an array. Each device must have a unique identifier (`device_id`). Each device may have an array of elements in its latest log (`latest_log`) containing `static_message_id` and `data`. This function saves each device to the database and logs a notification to the console with the saved device's identifier.
 
-# `device_locations(req, res)`
+## `device_locations(req, res)`
 
 This function retrieves the location of a specific device. It takes the device identifier (`device_id`) from the request (`req`) parameters. It searches for devices with this identifier in the database and returns the found devices (`dev`). This function also catches and throws an error in case of any potential issues.
 

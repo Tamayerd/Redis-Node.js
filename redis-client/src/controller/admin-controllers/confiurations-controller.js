@@ -1,6 +1,6 @@
 import { createClient } from 'redis';
 const client = createClient();
-await client.connect();
+await client.connected();
 
 
 export default class ConfigurationsController {

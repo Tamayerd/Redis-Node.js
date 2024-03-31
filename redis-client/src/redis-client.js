@@ -4,8 +4,6 @@ import session from "express-session";
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import { Repository } from "redis-om";
-import { deviceSchema } from "./data-access-object/redis-modxel.js";
 
 dotenv.config();
 const app = express();

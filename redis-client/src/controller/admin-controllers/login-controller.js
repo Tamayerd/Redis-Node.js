@@ -5,13 +5,13 @@ import  NodeCache  from "node-cache";
 
 const cache = new NodeCache();
 const client = createClient();
-await client.connect();
+await client.connected();
 
 export default class LoginController {
   // Display list of all Adminss.
   static async list(req, res) {
     try {
-      const fields = await client.hGetAll('user-session:8');
+      const fields = await client.hgetall('user-session:8');
       let parsedFields = {};
 
     parsedFields = Object.fromEntries(
@@ -55,7 +55,7 @@ export default class LoginController {
       const email = req.body.email
   
     //Unique id for appending
-    const fields = await client.hGetAll('user-session:9');
+    const fields = await client.hgetall('user-session:9');
     let maxId = 0;
     let lastUser;
 
@@ -81,7 +81,7 @@ export default class LoginController {
     //Set new user
     await client.hSet('user-session:9', `user${newUserId}`, jsonUser );
     //Get new user
-    const userValue = await client.hGet('user-session:9', `user${newUserId}`);
+    const userValue = await client.hget('user-session:9', `user${newUserId}`);
 
     res.status(200).send(JSON.parse(userValue));
     }
@@ -141,7 +141,7 @@ export default class LoginController {
   static async update_post(req, res) {
     try {
       const id = req.body.id
-      const findUser =  await client.hGet('user-session:9', `user${id}`);
+      const findUser =  await client.hget('user-session:9', `user${id}`);
       const userData = JSON.parse(findUser);
     
       
@@ -151,7 +151,7 @@ export default class LoginController {
         userData.password = hashedPassword
         
         //Set updated data 
-        await client.hSet('user-session:9', `user${id}`, JSON.stringify(userData));
+        await client.hset('user-session:9', `user${id}`, JSON.stringify(userData));
 
         res.status(200).send("Updated successfully");
       }

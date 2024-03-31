@@ -2,7 +2,7 @@ import bcrypt from "bcrypt";
 import jwt from 'jsonwebtoken';
 
 
-const JWT_SECRET = 'Imecar_Tracking_Server_Admin';
+const JWT_SECRET = 'Server_Admin';
 
 
 const password = "1";

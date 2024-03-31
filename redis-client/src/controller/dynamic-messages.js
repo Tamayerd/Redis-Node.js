@@ -1,4 +1,4 @@
-import { deviceRepository as repository } from "../../repository.js";
+import { deviceRepository as repository } from "../repository.js";
 
 export default class DevicesController {
 

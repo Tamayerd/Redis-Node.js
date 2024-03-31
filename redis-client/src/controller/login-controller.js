@@ -1,5 +1,5 @@
 import bcrypt from "bcrypt";
-import Authorizations from "../../authorization/auth.js"
+import Authorizations from "../authorization/auth.js"
 import { createClient } from 'redis';
 import  NodeCache  from "node-cache";
 
